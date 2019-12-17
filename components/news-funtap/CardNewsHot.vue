@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div class="card-wrapper my-1">
-      <img src="~/assets/game.png" class="news-card-img" alt="" />
+    <div class="card-wrapper mb-2">
+      <img src="~/assets/game.png" class="img-fluid news-card-img" alt="" />
       <div class="card-content">
         <div class="card-text">
           <div class="ct-text">
             <div class="ct-card-title">
-              100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000
+              100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000 100KNB khóa, Truyền
+              thừa đan*2, Linh thảo*15
             </div>
             <div class="d-flex justify-content-between align-center mt-2 st-info-card">
               <div class="cat-news">Game</div>
@@ -29,6 +30,7 @@ export default {
 <style lang="stylus" scoped>
 .card-wrapper
   position relative
+  cursor pointer
   .news-card-img
     max-height 175px
   .card-content
@@ -51,6 +53,11 @@ export default {
           line-height 1.4
           font-size 16px
           font-weight 700
+          overflow hidden
+          text-overflow ellipsis
+          display -webkit-box
+          -webkit-line-clamp 2
+          -webkit-box-orient vertical
         .st-info-card
           .cat-news
             font-size 12px
