@@ -59,6 +59,7 @@ export default {
       font-size 14px
       font-weight 500
   .n-content
+    text-align left
     .tt-title
       padding 15px 15px 6px 15px
       .ct-title
