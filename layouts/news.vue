@@ -34,7 +34,7 @@ export default {
 #news-funtap
   background #f6f6f6
 .height-fit
-  height 108px
+  height 106px
 .n-content-wrapper
   margin 0 auto
   max-width 768px

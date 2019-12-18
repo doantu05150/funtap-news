@@ -9,8 +9,7 @@
             color="#fff"
             class="icon-header mr-4"
           />
-          <img src="~/assets/logo.png" alt="logo" class="n-logo img-fluid" />
-          <div class="text-header">Chăm sóc<br />khách hàng</div>
+          <router-link to="/ho-tro" class="nf-logo"></router-link>
         </div>
         <div class="r-header">
           <font-awesome-icon v-if="isLogin" icon="user" color="#fff" class="icon-header" />
@@ -66,7 +65,7 @@ export default {
 
 <style lang="stylus" scoped>
 .n-navbar
-  background-color #f04406
+  background-color #f4843d
   position fixed
   top 0
   left 0
@@ -95,6 +94,10 @@ export default {
   .n-logo
     height 40px
     width 40px
+  .nf-logo
+    background url('../../assets/logo.svg')
+    width 102px
+    height 29px
   .text-header
     font-size 11px
     font-weight 700
