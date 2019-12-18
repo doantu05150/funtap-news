@@ -38,7 +38,6 @@ export default {
   data() {
     return {
       keyword: '',
-      showDrawer: false,
       resultsFound: [],
     }
   },
@@ -49,11 +48,6 @@ export default {
       .then(res => {
         this.resultsFound = res.data.articles
       })
-  },
-  methods: {
-    handleToggleDrawer() {
-      this.showDrawer = true
-    },
   },
 }
 </script>

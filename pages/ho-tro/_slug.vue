@@ -37,16 +37,6 @@ export default {
   components: {
     NewsHeader,
   },
-  data() {
-    return {
-      showDrawer: false,
-    }
-  },
-  methods: {
-    handleToggleDrawer() {
-      this.showDrawer = true
-    },
-  },
 }
 </script>
 

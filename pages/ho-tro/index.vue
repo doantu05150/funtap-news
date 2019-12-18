@@ -68,7 +68,6 @@ export default {
   },
   data() {
     return {
-      showDrawer: false,
       homeQuestions: [],
       fakeTop4Games: [
         {
@@ -94,11 +93,6 @@ export default {
     axios.get('http://portal-cmsapi.smobgame.com/api/faq-home').then(res => {
       this.homeQuestions = res.data.data
     })
-  },
-  methods: {
-    handleToggleDrawer() {
-      this.showDrawer = true
-    },
   },
 }
 </script>
