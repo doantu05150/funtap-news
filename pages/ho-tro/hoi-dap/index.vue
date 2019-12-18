@@ -73,6 +73,7 @@ export default {
 <style lang="stylus" scoped>
 .n-content
   padding-top 2.5rem
+  min-height 100vh
   .cat-title
     display flex
     flex-direction column
@@ -84,7 +85,7 @@ export default {
 .ct-btn-toggle
   text-align left
   padding 6px 15px
-  font-weight 100
+  font-weight 500
   font-size 18px
   cursor pointer
 </style>
