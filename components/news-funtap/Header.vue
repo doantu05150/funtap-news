@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between flex-1">
         <div class="l-header d-flex">
           <font-awesome-icon icon="bars" color="#fff" class="icon-header mr-4" />
-          <img src="~/assets/logo.png" alt="logo" class="n-logo img-fluid" />
+          <img @click="handleToggle" src="~/assets/logo.png" alt="logo" class="n-logo img-fluid" />
           <div class="text-header">Chăm sóc<br />khách hàng</div>
         </div>
         <div class="r-header">
@@ -29,6 +29,11 @@ export default {
       isLogin: false,
       textSearch: '',
     }
+  },
+  methods: {
+    handleToggle() {
+      this.$emit('handleToggleDrawer')
+    },
   },
 }
 </script>

@@ -1,51 +1,65 @@
 <template>
-  <div id="news-funtap">
-    <news-header />
-    <div class="height-fit" />
-    <b-container>
-      <div class="n-content-wrapper">
-        <img src="~/assets/bn3.jpg" alt="adv" class="img-fluid" />
-        <div class="d-flex py-2 n-tags">
-          <a v-for="(item, i) in fakeCategories" :key="i" class="tag-link" href="#">{{
-            item.title
-          }}</a>
-        </div>
-        <div class="n-content">
-          <div class="tt-title">
-            <span class="ct-title">Tin tức mới</span>
-          </div>
-          <b-container fluid>
-            <b-row>
-              <b-col cols="12" md="8">
-                <card-news-hot v-for="i in 2" :key="i" />
-              </b-col>
-              <b-col cols="12" md="4">
-                <div class="title-t4g">
-                  Top 4 game trong tuần
+  <div>
+    <vue-drawer-layout :drawer-width="280" @mask-click="handleMaskClick" ref="drawerLayout">
+      <div slot="drawer" class="drawer-content">
+        ajfaafasf
+      </div>
+      <div slot="content">
+        <div id="news-funtap">
+          <news-header @handleToggleDrawer="handleToggleDrawer" />
+          <div class="height-fit" />
+          <b-container>
+            <div class="n-content-wrapper">
+              <img src="~/assets/bn3.jpg" alt="adv" class="img-fluid" />
+              <div class="d-flex py-2 n-tags">
+                <a v-for="(item, i) in fakeCategories" :key="i" class="tag-link" href="#">{{
+                  item.title
+                }}</a>
+              </div>
+              <div class="n-content">
+                <div class="tt-title">
+                  <span class="ct-title">Tin tức mới</span>
                 </div>
-                <div class="clg-wrapper">
-                  <card-game-image v-for="(item, i) in fakeTop4Games" :key="i" :img="item.src" />
+                <b-container fluid>
+                  <b-row>
+                    <b-col cols="12" md="8">
+                      <card-news-hot v-for="i in 2" :key="i" />
+                    </b-col>
+                    <b-col cols="12" md="4">
+                      <div class="title-t4g">
+                        Top 4 game trong tuần
+                      </div>
+                      <div class="clg-wrapper">
+                        <card-game-image
+                          v-for="(item, i) in fakeTop4Games"
+                          :key="i"
+                          :img="item.src"
+                        />
+                      </div>
+                    </b-col>
+                  </b-row>
+                </b-container>
+                <div class="tt-title">
+                  <span class="ct-title">Tin tức khác</span>
                 </div>
-              </b-col>
-            </b-row>
-          </b-container>
-          <div class="tt-title">
-            <span class="ct-title">Tin tức khác</span>
-          </div>
-          <b-container fluid>
-            <b-row>
-              <b-col v-for="i in 3" :key="i" cols="12" md="4">
-                <card-vertical />
-              </b-col>
-            </b-row>
+                <b-container fluid>
+                  <b-row>
+                    <b-col v-for="i in 3" :key="i" cols="12" md="4">
+                      <card-vertical />
+                    </b-col>
+                  </b-row>
+                </b-container>
+              </div>
+            </div>
           </b-container>
         </div>
       </div>
-    </b-container>
+    </vue-drawer-layout>
   </div>
 </template>
 
 <script>
+import { DrawerLayout as VueDrawerLayout } from 'vue-drawer-layout'
 import {
   NewsHeader,
   SectionTitle,
@@ -61,6 +75,7 @@ export default {
     CardNewsHot,
     CardGameImage,
     CardVertical,
+    VueDrawerLayout,
   },
   data() {
     return {
@@ -109,6 +124,14 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    handleToggleDrawer() {
+      this.$refs.drawerLayout.toggle()
+    },
+    handleMaskClick() {
+      this.$refs.drawerLayout.toggle(false)
+    },
   },
 }
 </script>
