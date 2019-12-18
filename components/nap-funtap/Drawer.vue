@@ -5,6 +5,7 @@
         <div :style="[navContentStyles, drawerDirection]" class="nav-content">
           <slot name="drawer-content" />
         </div>
+        <div class="bg-blur-mask"></div>
       </div>
     </div>
   </div>

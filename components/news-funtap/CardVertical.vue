@@ -1,16 +1,18 @@
 <template>
   <div>
-    <div class="card-wrapper mb-2">
-      <img src="~/assets/game.png" class="img-fluid news-card-img" alt="" />
-      <div class="card-content">
-        <div class="ct-text">
-          <div class="ct-card-title">
-            100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000 Truyền thừa đan*2,
-            Linh thảo*15, Ngân phiếu *100.000
+    <router-link to="/news/this-is-slug" class="non-undl-hv">
+      <div class="card-wrapper mb-2">
+        <img src="~/assets/game.png" class="img-fluid news-card-img" alt="" />
+        <div class="card-content">
+          <div class="ct-text">
+            <div class="ct-card-title">
+              100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000 Truyền thừa đan*2,
+              Linh thảo*15, Ngân phiếu *100.000
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -35,6 +37,7 @@ export default {
         font-size 14px
         font-weight 600
         line-height 1.3
+        color #333
         margin 8px 0
         padding 0 8px
         overflow hidden
@@ -42,4 +45,7 @@ export default {
         display -webkit-box
         -webkit-line-clamp 3
         -webkit-box-orient vertical
+.non-undl-hv
+  &:hover
+    text-decoration none !important
 </style>

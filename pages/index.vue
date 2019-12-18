@@ -8,7 +8,7 @@
         <router-link to="/sercet">go to sercet page</router-link>
       </div>
       <div>
-        <router-link to="/news-funtap">go to news - funtap</router-link>
+        <router-link to="/news">go to news - funtap</router-link>
       </div>
     </b-col>
   </div>

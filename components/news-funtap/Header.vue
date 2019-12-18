@@ -3,14 +3,26 @@
     <div class="n-header d-flex">
       <div class="d-flex justify-content-between flex-1">
         <div class="l-header d-flex">
-          <font-awesome-icon icon="bars" color="#fff" class="icon-header mr-4" />
-          <img @click="handleToggle" src="~/assets/logo.png" alt="logo" class="n-logo img-fluid" />
+          <font-awesome-icon
+            @click="handleToggle"
+            icon="bars"
+            color="#fff"
+            class="icon-header mr-4"
+          />
+          <img src="~/assets/logo.png" alt="logo" class="n-logo img-fluid" />
           <div class="text-header">Chăm sóc<br />khách hàng</div>
         </div>
         <div class="r-header">
           <font-awesome-icon v-if="isLogin" icon="user" color="#fff" class="icon-header" />
           <div v-else class="user-avt">
-            <img src="~/assets/avt.jpg" alt="avatar" class="avt-circle" />
+            <img id="popover-avt-header" src="~/assets/avt.jpg" alt="avatar" class="avt-circle" />
+            <b-popover target="popover-avt-header" placement="left-bottom" triggers="hover focus">
+              <template v-slot:title>DoanTu</template>
+              <div class="d-flex dir-column">
+                <nuxt-link to="#" class="non-undl-hv">Thông tin tài khoản</nuxt-link>
+                <nuxt-link to="#" class="non-undl-hv bdt">Đăng xuất</nuxt-link>
+              </div>
+            </b-popover>
           </div>
         </div>
       </div>
@@ -102,4 +114,14 @@ export default {
     width 100%
     height 2px
     bottom 0
+.dir-column
+  flex-direction column
+  .non-undl-hv
+    color #333
+    padding 8px 0
+    &:hover
+      text-decoration none !important
+  .bdt
+    border-top 0.5px solid #cecece
+    color #ef493d
 </style>
