@@ -50,6 +50,7 @@ import { CardCategory, CardQuestion, ListNav } from '~/components/news-funtap'
 
 export default {
   layout: 'news',
+  name: 'HoTro',
   components: {
     CardCategory,
     CardQuestion,

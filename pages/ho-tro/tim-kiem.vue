@@ -44,7 +44,6 @@ export default {
   },
   created() {
     const { keyword } = this.$route.query
-    console.log('k', keyword)
     axios
       .get(`http://portal-cmsapi.smobgame.com/api/article_search?keyword=${keyword}`)
       .then(res => {

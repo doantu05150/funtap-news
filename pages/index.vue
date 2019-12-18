@@ -2,13 +2,10 @@
   <div class="container">
     <b-col>
       <div>
-        our home page
+        funtap home page
       </div>
       <div>
-        <router-link to="/sercet">go to sercet page</router-link>
-      </div>
-      <div>
-        <router-link to="/ho-tro">go to news - funtap</router-link>
+        <router-link to="/ho-tro">Đi đến trang Hỗ trợ của Funtap</router-link>
       </div>
     </b-col>
   </div>
@@ -17,14 +14,3 @@
 <script>
 export default {}
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-</style>
