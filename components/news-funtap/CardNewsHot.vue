@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/news/this-is-slug">
+    <router-link to="/ho-tro/this-is-slug">
       <div class="card-wrapper mb-2">
         <img src="~/assets/game.png" class="img-fluid news-card-img" alt="" />
         <div class="card-content">

@@ -29,7 +29,12 @@
     </div>
     <div class="search-bar">
       <font-awesome-icon icon="search" color="#c9c9c9" class="icon-search" />
-      <b-form-input v-model="textSearch" class="ct-input" placeholder="Tìm kiếm"></b-form-input>
+      <b-form-input
+        v-model="keyword"
+        @keydown.enter.native="search(keyword)"
+        class="ct-input"
+        placeholder="Tìm kiếm"
+      ></b-form-input>
     </div>
   </div>
 </template>
@@ -39,12 +44,21 @@ export default {
   data() {
     return {
       isLogin: false,
-      textSearch: '',
+      keyword: '',
     }
   },
   methods: {
     handleToggle() {
       this.$emit('handleToggleDrawer')
+    },
+    search(keyword) {
+      this.keyword = ''
+      this.$router.push({
+        path: '/ho-tro/tim-kiem',
+        query: {
+          keyword,
+        },
+      })
     },
   },
 }

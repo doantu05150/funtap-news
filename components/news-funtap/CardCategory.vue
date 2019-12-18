@@ -1,13 +1,12 @@
 <template>
   <div>
-    <router-link to="/ho-tro/this-is-slug" class="non-undl-hv">
+    <router-link :to="`/ho-tro/hoi-dap/${item.alias}`" class="non-undl-hv">
       <div class="card-wrapper mb-2">
-        <img src="~/assets/game.png" class="img-fluid news-card-img" alt="" />
+        <font-awesome-icon icon="question-circle" color="#fff" class="mr-2 icon-q" />
         <div class="card-content">
           <div class="ct-text">
             <div class="ct-card-title">
-              100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000 Truyền thừa đan*2,
-              Linh thảo*15, Ngân phiếu *100.000
+              {{ item.title }}
             </div>
           </div>
         </div>
@@ -18,7 +17,13 @@
 
 <script>
 export default {
-  name: 'CardVertical',
+  name: 'CardCategory',
+  props: {
+    item: {
+      type: Object,
+      required: true,
+    },
+  },
 }
 </script>
 
@@ -28,24 +33,27 @@ export default {
   border-radius 4px
   overflow hidden
   box-shadow 0px 0px 10px 3px #cecece
-  cursor pointer
+  display flex
+  flex-direction column
+  padding 10px 20px
+  background linear-gradient(to bottom, #ffcc00 0%, #ff6600 100%)
+  min-height 180px
   .news-card-img
     max-height 175px
   .card-content
     .ct-text
       .ct-card-title
-        font-size 14px
-        font-weight 600
+        font-size 18px
+        font-weight 700
         line-height 1.3
-        color #333
-        margin 8px 0
-        padding 0 8px
-        overflow hidden
-        text-overflow ellipsis
-        display -webkit-box
-        -webkit-line-clamp 3
-        -webkit-box-orient vertical
+        color #fff
+        margin-top 2rem
 .non-undl-hv
   &:hover
     text-decoration none !important
+.icon-q
+  width 3.6rem
+  height 3.6rem
+  align-self center
+  margin 0 !important
 </style>

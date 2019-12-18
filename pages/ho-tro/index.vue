@@ -1,9 +1,7 @@
 <template>
   <div>
     <img src="~/assets/bn3.jpg" alt="adv" class="img-fluid" />
-    <div class="d-flex py-2 n-tags">
-      <a v-for="(item, i) in fakeCategories" :key="i" class="tag-link" href="#">{{ item.title }}</a>
-    </div>
+    <list-nav />
     <div class="n-content">
       <div class="tt-title">
         <span class="ct-title">Tin tức mới</span>
@@ -33,59 +31,45 @@
           </b-col>
         </b-row>
       </b-container>
+      <div class="tt-title">
+        <span class="ct-title">Các câu hỏi thường gặp</span>
+      </div>
+      <b-container fluid>
+        <b-row>
+          <b-col v-for="(item, i) in homeQuestions" :key="`question_${i}`" cols="12">
+            <card-question :item="item" />
+          </b-col>
+        </b-row>
+      </b-container>
     </div>
   </div>
 </template>
 
 <script>
-import { NapDrawer } from '~/components/nap-funtap'
+import axios from 'axios'
 import {
-  NewsHeader,
   SectionTitle,
   CardNewsHot,
   CardGameImage,
   CardVertical,
+  CardQuestion,
+  ListNav,
 } from '~/components/news-funtap'
 
 export default {
   layout: 'news',
   components: {
-    NewsHeader,
     SectionTitle,
     CardNewsHot,
     CardGameImage,
     CardVertical,
-    NapDrawer,
+    CardQuestion,
+    ListNav,
   },
   data() {
     return {
       showDrawer: false,
-      fakeCategories: [
-        {
-          title: 'Trang chủ',
-          link: '#',
-        },
-        {
-          title: 'Giải đấu',
-          link: '#',
-        },
-        {
-          title: 'Sự kiện',
-          link: '#',
-        },
-        {
-          title: 'Khuyến mãi',
-          link: '#',
-        },
-        {
-          title: 'Cập nhật',
-          link: '#',
-        },
-        {
-          title: 'Video',
-          link: '#',
-        },
-      ],
+      homeQuestions: [],
       fakeTop4Games: [
         {
           src: 'https://cdn.smobgame.com/5df73955591c4.jpg',
@@ -106,6 +90,11 @@ export default {
       ],
     }
   },
+  created() {
+    axios.get('http://portal-cmsapi.smobgame.com/api/faq-home').then(res => {
+      this.homeQuestions = res.data.data
+    })
+  },
   methods: {
     handleToggleDrawer() {
       this.showDrawer = true
@@ -115,13 +104,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.n-tags
-  justify-content space-evenly
-  border-bottom 2px solid #f6f6f6
-  .tag-link
-    color #333
-    font-size 14px
-    font-weight 500
 .n-content
   text-align left
   .tt-title
