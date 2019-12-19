@@ -16,7 +16,7 @@
         alt="main-img"
       />
     </div>
-    <p class="ctp-content">
+    <div class="ctp-content">
       {{
         `Bắt buộc phải quy đổi từ Sò sang RP mới được tính trong sự kiện, hình thức nạp RP bằng tin nhắn SMS hoặc AirPay sẽ KHÔNG được nhận khuyến mãi.
 Quy đổi không tích lũy, bạn chọn mốc quy đổi nào sẽ nhận được RP khuyến mãi của mốc đó, bạn sẽ có TỔNG CỘNG 5 LẦN nhận khuyến mãi khi quy đổi RP.
@@ -25,7 +25,7 @@ Quy đổi dưới 40 RP, dĩ nhiên là bạn không nhận được RP khuyế
 Có thể nhận cả 5 lần khuyến mãi trên một mốc quy đổi. Ví dụ: Bạn quy đổi 5 lần 2000 RP thì bạn sẽ nhận được tương ứng 5 lần 2800 RP, nhưng sau 5 lần quy đổi, bạn sẽ không nhận khuyến mãi ở bất kì mốc nào nữa.
 RP thưởng thêm từ hệ thống khi quy đổi sẽ không được tính vào chương trình khuyến mãi.`
       }}
-    </p>
+    </div>
   </div>
 </template>
 
@@ -55,9 +55,7 @@ export default {
     width 100%
     text-align center
   .ctp-content
-    font-size 15px
-    line-height 1.6
-    letter-spacing 1px
+    overflow hidden
   .n-cat
     div
       padding 4px

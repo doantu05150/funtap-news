@@ -43,12 +43,15 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    proxy: true,
+  },
   /*
    ** Build configuration
    */
@@ -58,7 +61,12 @@ export default {
      */
     extend(config, ctx) {},
   },
-  devServer: {
-    proxy: 'http://portal-cmsapi.smobgame.com/',
+  proxy: {
+    '/api': {
+      target: 'http://portal-cmsapi.smobgame.com/',
+      pathRewrite: {
+        '^/api': '/',
+      },
+    },
   },
 }

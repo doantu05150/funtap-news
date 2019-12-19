@@ -20,7 +20,7 @@
           alt="main-img"
         />
       </div>
-      <p v-html="detailPost.content" class="ctp-content"></p>
+      <div v-html="detailPost.content" class="ctp-content"></div>
     </div>
     <div v-else class="vh-100">
       <h1 class="text-center">Error 404. Page not found</h1>
@@ -84,6 +84,8 @@ export default {
   .mi-wrapper
     width 100%
     text-align center
+  .ctp-content
+    overflow hidden
   .n-cat
     div
       padding 4px
