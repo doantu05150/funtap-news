@@ -48,6 +48,8 @@ export default {
       .then(res => {
         this.resultsFound = res.data.articles
       })
+      // eslint-disable-next-line no-console
+      .catch(error => console.log(error))
   },
 }
 </script>

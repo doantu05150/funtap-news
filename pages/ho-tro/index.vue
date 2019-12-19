@@ -90,9 +90,13 @@ export default {
     }
   },
   created() {
-    axios.get('http://portal-cmsapi.smobgame.com/api/faq-home').then(res => {
-      this.homeQuestions = res.data.data
-    })
+    axios
+      .get('http://portal-cmsapi.smobgame.com/api/faq-home')
+      .then(res => {
+        this.homeQuestions = res.data.data
+      })
+      // eslint-disable-next-line no-console
+      .catch(error => console.log(error))
   },
 }
 </script>

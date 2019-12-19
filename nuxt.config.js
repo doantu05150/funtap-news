@@ -58,4 +58,7 @@ export default {
      */
     extend(config, ctx) {},
   },
+  devServer: {
+    proxy: 'http://portal-cmsapi.smobgame.com/',
+  },
 }

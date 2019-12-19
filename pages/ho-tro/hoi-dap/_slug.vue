@@ -48,9 +48,13 @@ export default {
   created() {
     const { slug } = this.$route.params
     const url = `http://portal-cmsapi.smobgame.com/api/faq/${slug}`
-    axios.get(url).then(res => {
-      this.detailPost = res.data.data
-    })
+    axios
+      .get(url)
+      .then(res => {
+        this.detailPost = res.data.data
+      })
+      // eslint-disable-next-line no-console
+      .catch(error => console.log(error))
   },
   methods: {
     handleToggleDrawer() {

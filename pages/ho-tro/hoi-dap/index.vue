@@ -63,9 +63,13 @@ export default {
     }
   },
   created() {
-    axios.get('http://portal-cmsapi.smobgame.com/api/faq-with-category').then(res => {
-      this.categories = res.data.data
-    })
+    axios
+      .get('http://portal-cmsapi.smobgame.com/api/faq-with-category')
+      .then(res => {
+        this.categories = res.data.data
+      })
+      // eslint-disable-next-line no-console
+      .catch(error => console.log(error))
   },
 }
 </script>
