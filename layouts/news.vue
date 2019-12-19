@@ -27,7 +27,7 @@
 
 <script>
 import { NewsHeader } from '~/components/news-funtap'
-import CtDrawer from '~/components/common/Drawer'
+import { CtDrawer } from '~/components/common'
 
 export default {
   components: {

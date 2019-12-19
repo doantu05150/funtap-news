@@ -3,7 +3,7 @@
     <img src="~/assets/bn3.jpg" alt="adv" class="img-fluid" />
     <list-nav />
     <div class="n-content">
-      <b-container>
+      <b-container v-if="keyword">
         <h3 class="mt-2 mb-4">
           Kết quả tìm kiếm của <b>"{{ keyword }}"</b>
         </h3>
@@ -11,9 +11,27 @@
           <b-col v-for="(item, id) in resultsFound" :key="`result_${id}`" cols="12">
             <card-horizontal :item="item" />
           </b-col>
+          <b-col cols="12">
+            <div class="overflow-auto my-3">
+              <b-pagination
+                v-model="currentPage"
+                :link-gen="linkGen"
+                :total-rows="getTotalPosts"
+                :per-page="perPage"
+                pills
+                size="sm"
+                use-router
+              ></b-pagination>
+            </div>
+          </b-col>
         </b-row>
         <h4 v-else>Không tìm thấy kết quả nào ~~</h4>
       </b-container>
+      <b-container v-else>
+        <h3 class="text-center mt-2 mb-4">
+          Bạn chưa nhập từ khóa
+        </h3></b-container
+      >
     </div>
   </div>
 </template>
@@ -39,7 +57,15 @@ export default {
     return {
       keyword: '',
       resultsFound: [],
+      pageNum: 1,
+      perPage: 5,
+      currentPage: 1,
     }
+  },
+  computed: {
+    getTotalPosts() {
+      return this.resultsFound.length
+    },
   },
   created() {
     const { keyword } = this.$route.query
@@ -51,17 +77,15 @@ export default {
       // eslint-disable-next-line no-console
       .catch(error => console.log(error))
   },
+  methods: {
+    linkGen(pageNum) {
+      return pageNum === 1 ? '?' : `?page=${pageNum}`
+    },
+  },
 }
 </script>
 
 <style lang="stylus" scoped>
-.n-tags
-  justify-content space-evenly
-  border-bottom 2px solid #f6f6f6
-  .tag-link
-    color #333
-    font-size 14px
-    font-weight 500
 .n-content
   text-align left
   padding 10px
