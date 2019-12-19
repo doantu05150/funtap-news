@@ -9,9 +9,7 @@
           @click="handleToggleDrawer"
           class="py-1 px-3 link-item"
         >
-          <nuxt-link :to="`/ho-tro/${item.link}`" class="text-white w500">{{
-            item.title
-          }}</nuxt-link>
+          <nuxt-link :to="`${item.link}`" class="text-white w500">{{ item.title }}</nuxt-link>
         </div>
       </template>
     </ct-drawer>
@@ -40,11 +38,11 @@ export default {
       navLinks: [
         {
           title: 'Trang chủ',
-          link: '',
+          link: '/',
         },
         {
           title: 'Hỏi đáp',
-          link: 'hoi-dap',
+          link: '/ho-tro/hoi-dap',
         },
         {
           title: 'Sự kiện',

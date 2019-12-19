@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex py-2 n-tags">
-      <a v-for="(item, i) in navLinks" :key="i" :href="`/ho-tro/${item.link}`" class="tag-link">{{
+      <a v-for="(item, i) in navLinks" :key="i" :href="`${item.link}`" class="tag-link">{{
         item.title
       }}</a>
     </div>
@@ -15,11 +15,11 @@ export default {
       navLinks: [
         {
           title: 'Trang chủ',
-          link: '',
+          link: '/',
         },
         {
           title: 'Hỏi đáp',
-          link: 'hoi-dap',
+          link: '/ho-tro/hoi-dap',
         },
         {
           title: 'Sự kiện',
