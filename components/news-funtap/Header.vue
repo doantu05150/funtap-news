@@ -9,7 +9,7 @@
             color="#fff"
             class="icon-header mr-4"
           />
-          <router-link to="/ho-tro" class="nf-logo"></router-link>
+          <router-link to="/" class="nf-logo"></router-link>
         </div>
         <div class="r-header">
           <font-awesome-icon v-if="isLogin" icon="user" color="#fff" class="icon-header" />

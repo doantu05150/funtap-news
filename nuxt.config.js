@@ -1,5 +1,5 @@
 export default {
-  mode: 'spa',
+  mode: 'csr',
   /*
    ** Headers of the page
    */
