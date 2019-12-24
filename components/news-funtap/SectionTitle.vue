@@ -1,7 +1,9 @@
 <template>
-  <div class="tt-title">
-    <span class="ct-title">{{ title }}</span>
-  </div>
+  <no-ssr>
+    <div class="tt-title">
+      <span class="ct-title">{{ title }}</span>
+    </div>
+  </no-ssr>
 </template>
 
 <script>

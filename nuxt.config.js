@@ -1,5 +1,5 @@
 export default {
-  mode: 'csr',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -11,10 +11,10 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: 'Funtap hỗ trợ website',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/svg', href: '~/assets/logo.svg' }],
   },
   /*
    ** Customize the progress-bar color

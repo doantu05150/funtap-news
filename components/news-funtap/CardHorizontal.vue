@@ -1,25 +1,32 @@
 <template>
-  <div>
-    <router-link v-if="item" :to="`/ho-tro/hoi-dap/${item.alias}`" class="non-undl-hv">
-      <div class="d-flex card-wrapper mb-2">
-        <img v-if="item.src" src="~/assets/game.png" class="img-fluid news-card-img" alt="" />
-        <div class="d-flex card-content">
-          <div class="d-flex ct-text">
-            <div class="ct-card-title mb-1">
-              {{ item.title }}
-            </div>
-            <p v-html="item.content" class="ct-card-content mb-2"></p>
-            <div class="d-flex justify-content-between mi-rs">
-              <div class="uto-news">
-                <font-awesome-icon icon="user" color="#666" class="mr-1" />DoanTu
+  <no-ssr>
+    <div>
+      <router-link v-if="item" :to="`/ho-tro/hoi-dap/${item.alias}`" class="non-undl-hv">
+        <div class="d-flex card-wrapper mb-2">
+          <img
+            v-if="item.src"
+            src="~/assets/images/game.png"
+            class="img-fluid news-card-img"
+            alt=""
+          />
+          <div class="d-flex card-content">
+            <div class="d-flex ct-text">
+              <div class="ct-card-title mb-1">
+                {{ item.title }}
               </div>
-              <div class="dop-news">{{ item.published_date }}</div>
+              <p v-html="item.content" class="ct-card-content mb-2"></p>
+              <div class="d-flex justify-content-between mi-rs">
+                <div class="uto-news">
+                  <font-awesome-icon icon="user" color="#666" class="mr-1" />DoanTu
+                </div>
+                <div class="dop-news">{{ item.published_date }}</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </router-link>
-  </div>
+      </router-link>
+    </div>
+  </no-ssr>
 </template>
 
 <script>

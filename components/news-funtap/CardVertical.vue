@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <router-link to="/ho-tro/this-is-slug" class="non-undl-hv">
-      <div class="card-wrapper mb-2">
-        <img src="~/assets/game.png" class="img-fluid news-card-img" alt="" />
-        <div class="card-content">
-          <div class="ct-text">
-            <div class="ct-card-title">
-              100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000 Truyền thừa đan*2,
-              Linh thảo*15, Ngân phiếu *100.000
+  <no-ssr>
+    <div>
+      <router-link to="/ho-tro/this-is-slug" class="non-undl-hv">
+        <div class="card-wrapper mb-2">
+          <img src="~/assets/images/game.png" class="img-fluid news-card-img" alt="" />
+          <div class="card-content">
+            <div class="ct-text">
+              <div class="ct-card-title">
+                100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000 Truyền thừa đan*2,
+                Linh thảo*15, Ngân phiếu *100.000
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </router-link>
-  </div>
+      </router-link>
+    </div></no-ssr
+  >
 </template>
 
 <script>

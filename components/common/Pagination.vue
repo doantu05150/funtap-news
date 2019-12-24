@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <div class="d-flex pagination">
-      <nuxt-link to="#" class="paging">&lt; Previous</nuxt-link>
-      <div v-for="(item, index) in computedPagination" :key="`page${index}`">
-        <div @click="changeCurrentPage" class="paging">
-          <nuxt-link to="#">{{ item === null ? '...' : item }}</nuxt-link>
+  <no-ssr>
+    <div>
+      <div class="d-flex pagination">
+        <nuxt-link to="#" class="paging">&lt; Previous</nuxt-link>
+        <div v-for="(item, index) in computedPagination" :key="`page${index}`">
+          <div @click="changeCurrentPage" class="paging">
+            <nuxt-link to="#">{{ item === null ? '...' : item }}</nuxt-link>
+          </div>
+          <!-- <div v-else class="paging">{{ index }}</div> -->
         </div>
-        <!-- <div v-else class="paging">{{ index }}</div> -->
+        <nuxt-link to="#" class="paging">Next ></nuxt-link>
+        <p class="mr-4">{{ currentPage }}</p>
+        <p>{{ numberOfPage }}</p>
       </div>
-      <nuxt-link to="#" class="paging">Next ></nuxt-link>
-      <p class="mr-4">{{ currentPage }}</p>
-      <p>{{ numberOfPage }}</p>
     </div>
-  </div>
+  </no-ssr>
 </template>
 
 <script>

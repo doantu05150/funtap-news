@@ -45,6 +45,42 @@ export default {
       detailPost: {},
     }
   },
+  computed: {
+    renderTitle() {
+      if (this.detailPost) {
+        if (this.detailPost.title) {
+          return this.detailPost.title
+        } else {
+          return 'Loading...'
+        }
+      } else {
+        return 'Page not found'
+      }
+    },
+    renderDescription() {
+      if (this.detailPost) {
+        if (this.detailPost.title) {
+          return this.detailPost.title
+        } else {
+          return 'Description'
+        }
+      } else {
+        return ''
+      }
+    },
+  },
+  head() {
+    return {
+      title: this.renderTitle,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.renderDescription,
+        },
+      ],
+    }
+  },
   created() {
     const { slug } = this.$route.params
     const url = `http://portal-cmsapi.smobgame.com/api/faq/${slug}`

@@ -1,7 +1,7 @@
 {
   "name": "funtap-website",
   "version": "1.0.0",
-  "description": "My wonderful Nuxt.js project",
+  "description": "Trung tâm hỗ tợ khác hàng của Funtap",
   "author": "DoanTu",
   "private": true,
   "scripts": {
@@ -24,6 +24,7 @@
     "date-fns": "^2.8.1",
     "font-awesome": "^4.7.0",
     "gsap": "^3.0.4",
+    "html-minifier": "^4.0.0",
     "nuxt": "^2.0.0",
     "vue-drawer-layout": "^1.3.0"
   },

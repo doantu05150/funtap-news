@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <div class="card-wrapper mb-1">
-      <a href="#">
-        <img :src="img" class="cg-image" alt="card-game" />
-      </a>
+  <no-ssr>
+    <div>
+      <div class="card-wrapper mb-1">
+        <a href="#">
+          <img :src="img" class="cg-image" alt="card-game" />
+        </a>
+      </div>
     </div>
-  </div>
+  </no-ssr>
 </template>
 
 <script>

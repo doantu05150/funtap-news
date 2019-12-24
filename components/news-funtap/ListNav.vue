@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <div class="d-flex py-2 n-tags">
-      <a v-for="(item, i) in navLinks" :key="i" :href="`${item.link}`" class="tag-link">{{
-        item.title
-      }}</a>
+  <no-ssr>
+    <div>
+      <div class="d-flex py-2 n-tags">
+        <a v-for="(item, i) in navLinks" :key="i" :href="`${item.link}`" class="tag-link">{{
+          item.title
+        }}</a>
+      </div>
     </div>
-  </div>
+  </no-ssr>
 </template>
 
 <script>

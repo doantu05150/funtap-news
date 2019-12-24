@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="~/assets/bn3.jpg" alt="adv" class="img-fluid" />
+    <img src="~/assets/images/bn3.jpg" alt="adv" class="img-fluid" />
     <list-nav />
     <div class="n-content">
       <b-container v-if="keyword">
@@ -42,6 +42,9 @@ import { CardHorizontal, ListNav } from '~/components/news-funtap'
 
 export default {
   layout: 'news',
+  head: {
+    title: 'Tìm kiếm',
+  },
   components: {
     CardHorizontal,
     ListNav,

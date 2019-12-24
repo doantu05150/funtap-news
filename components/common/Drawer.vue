@@ -1,14 +1,15 @@
 <template>
-  <div id="idnap-drawer" class="c-drawer">
-    <div :style="bgBlur" @click="hideDrawer" id="bbmToggle" class="bg-blur-mask"></div>
-    <aside class="nav-drawer">
-      <div class="nav-container">
-        <div :style="[navContentStyles, drawerDirection]" class="nav-content">
-          <slot name="drawer-content" />
+  <no-ssr>
+    <div id="idnap-drawer" class="c-drawer">
+      <div :style="bgBlur" @click="hideDrawer" id="bbmToggle" class="bg-blur-mask"></div>
+      <aside class="nav-drawer">
+        <div class="nav-container">
+          <div :style="[navContentStyles, drawerDirection]" class="nav-content">
+            <slot name="drawer-content" />
+          </div>
         </div>
-      </div>
-    </aside>
-  </div>
+      </aside></div
+  ></no-ssr>
 </template>
 
 <script>

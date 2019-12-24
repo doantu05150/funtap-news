@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="~/assets/bn3.jpg" alt="adv" class="img-fluid" />
+    <img src="~/assets/images/bn3.jpg" alt="adv" class="img-fluid" />
     <list-nav />
     <div class="n-content">
       <div class="tt-title">
@@ -58,6 +58,9 @@ import {
 
 export default {
   layout: 'news',
+  head: {
+    title: 'Trang chủ',
+  },
   components: {
     SectionTitle,
     CardNewsHot,
