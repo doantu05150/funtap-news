@@ -34,13 +34,16 @@
       <div class="tt-title">
         <span class="ct-title">Các câu hỏi thường gặp</span>
       </div>
-      <b-container fluid>
-        <b-row>
-          <b-col v-for="(item, i) in homeQuestions" :key="`question_${i}`" cols="12">
-            <card-question :item="item" />
-          </b-col>
-        </b-row>
-      </b-container>
+      <v-wait for="home.question">
+        <home-question-loading v-for="i in 4" :key="i" slot="waiting" />
+        <b-container fluid>
+          <b-row>
+            <b-col v-for="(item, i) in homeQuestions" :key="`question_${i}`" cols="12">
+              <card-question :item="item" />
+            </b-col>
+          </b-row>
+        </b-container>
+      </v-wait>
     </div>
   </div>
 </template>
@@ -55,6 +58,7 @@ import {
   CardQuestion,
   ListNav,
 } from '~/components/news-funtap'
+import { HomeQuestionLoading, CardHorizontalLoading } from '~/components/common/loading'
 
 export default {
   layout: 'news',
@@ -68,6 +72,8 @@ export default {
     CardVertical,
     CardQuestion,
     ListNav,
+    HomeQuestionLoading,
+    CardHorizontalLoading,
   },
   data() {
     return {
@@ -92,14 +98,16 @@ export default {
       ],
     }
   },
-  created() {
-    axios
+  async created() {
+    this.$wait.start('home.question')
+    await axios
       .get('http://portal-cmsapi.smobgame.com/api/faq-home')
       .then(res => {
         this.homeQuestions = res.data.data
       })
       // eslint-disable-next-line no-console
       .catch(error => console.log(error))
+    this.$wait.end('home.question')
   },
 }
 </script>

@@ -1,31 +1,39 @@
 <template>
-  <div>
-    <router-link to="/ho-tro/this-is-slug">
-      <div class="card-wrapper mb-2">
-        <img src="~/assets/images/game.png" class="img-fluid news-card-img" alt="" />
-        <div class="card-content">
-          <div class="card-text">
-            <div class="ct-text">
-              <div class="ct-card-title">
-                100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000 100KNB khóa,
-                Truyền thừa đan*2, Linh thảo*15
-              </div>
-              <div class="d-flex justify-content-between align-center mt-2 st-info-card">
-                <div class="cat-news">Game</div>
-                <div class="doc-news">08-01-2019</div>
+  <client-only placeholder="Loading...">
+    <!-- <card-new-loading slot="placeholder" class="mb-2" /> -->
+    <div>
+      <router-link to="/ho-tro/this-is-slug">
+        <div class="card-wrapper mb-2">
+          <img src="~/assets/images/game.png" class="img-fluid news-card-img" alt="" />
+          <div class="card-content">
+            <div class="card-text">
+              <div class="ct-text">
+                <div class="ct-card-title">
+                  100KNB khóa, Truyền thừa đan*2, Linh thảo*15, Ngân phiếu *100.000 100KNB khóa,
+                  Truyền thừa đan*2, Linh thảo*15
+                </div>
+                <div class="d-flex justify-content-between align-center mt-2 st-info-card">
+                  <div class="cat-news">Game</div>
+                  <div class="doc-news">08-01-2019</div>
+                </div>
               </div>
             </div>
+            <div class="bg-unblur" />
           </div>
-          <div class="bg-unblur" />
         </div>
-      </div>
-    </router-link>
-  </div>
+      </router-link>
+    </div>
+  </client-only>
 </template>
 
 <script>
+import { CardNewLoading } from '~/components/common/loading'
+
 export default {
   name: 'CardNewsHot',
+  components: {
+    CardNewLoading,
+  },
 }
 </script>
 

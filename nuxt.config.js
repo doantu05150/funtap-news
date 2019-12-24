@@ -44,6 +44,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
+    'vue-wait/nuxt',
   ],
   /*
    ** Axios module configuration

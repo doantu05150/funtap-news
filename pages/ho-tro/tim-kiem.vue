@@ -7,25 +7,32 @@
         <h3 class="mt-2 mb-4">
           Kết quả tìm kiếm của <b>"{{ keyword }}"</b>
         </h3>
-        <b-row v-if="resultsFound.length">
-          <b-col v-for="(item, id) in resultsFound" :key="`result_${id}`" cols="12">
-            <card-horizontal :item="item" />
-          </b-col>
-          <b-col cols="12">
-            <div class="overflow-auto my-3">
-              <b-pagination
-                v-model="currentPage"
-                :link-gen="linkGen"
-                :total-rows="getTotalPosts"
-                :per-page="perPage"
-                pills
-                size="sm"
-                use-router
-              ></b-pagination>
-            </div>
-          </b-col>
-        </b-row>
-        <h4 v-else>Không tìm thấy kết quả nào ~~</h4>
+        <v-wait for="search.results">
+          <template slot="waiting">
+            <card-search-loading v-for="i in 6" :key="i" />
+          </template>
+          <div>
+            <b-row v-if="resultsFound.length">
+              <b-col v-for="(item, id) in resultsFound" :key="`result_${id}`" cols="12">
+                <card-horizontal :item="item" />
+              </b-col>
+              <b-col cols="12">
+                <div class="overflow-auto my-3">
+                  <b-pagination
+                    v-model="currentPage"
+                    :link-gen="linkGen"
+                    :total-rows="getTotalPosts"
+                    :per-page="perPage"
+                    pills
+                    size="sm"
+                    use-router
+                  ></b-pagination>
+                </div>
+              </b-col>
+            </b-row>
+            <h4 v-else>Không tìm thấy kết quả nào ~~</h4>
+          </div>
+        </v-wait>
       </b-container>
       <b-container v-else>
         <h3 class="text-center mt-2 mb-4">
@@ -39,6 +46,7 @@
 <script>
 import axios from 'axios'
 import { CardHorizontal, ListNav } from '~/components/news-funtap'
+import { CardSearchLoading } from '~/components/common/loading'
 
 export default {
   layout: 'news',
@@ -48,6 +56,7 @@ export default {
   components: {
     CardHorizontal,
     ListNav,
+    CardSearchLoading,
   },
   watchQuery: ['keyword'],
   asyncData({ query }) {
@@ -70,15 +79,17 @@ export default {
       return this.resultsFound.length
     },
   },
-  created() {
+  async created() {
     const { keyword } = this.$route.query
-    axios
+    this.$wait.start('search.results')
+    await axios
       .get(`http://portal-cmsapi.smobgame.com/api/article_search?keyword=${keyword}`)
       .then(res => {
         this.resultsFound = res.data.articles
       })
       // eslint-disable-next-line no-console
       .catch(error => console.log(error))
+    this.$wait.end('search.results')
   },
   methods: {
     linkGen(pageNum) {
