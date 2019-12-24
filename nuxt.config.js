@@ -27,7 +27,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/fontawesome.js'],
+  plugins: ['~/plugins/fontawesome.js', '~/plugins/vue-lazyload.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -63,10 +63,11 @@ export default {
   },
   proxy: {
     '/api': {
-      target: 'http://portal-cmsapi.smobgame.com/',
+      target: 'http://portal-cmsapi.smobgame.com/api/',
       pathRewrite: {
-        '^/api': '/',
+        '^/api': '',
       },
+      changeOrigin: true,
     },
   },
 }

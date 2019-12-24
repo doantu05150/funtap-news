@@ -1,20 +1,18 @@
 <template>
-  <no-ssr>
-    <div>
-      <router-link :to="`/ho-tro/hoi-dap/${item.alias}`" class="non-undl-hv">
-        <div class="card-wrapper mb-2">
-          <font-awesome-icon icon="question-circle" color="#fff" class="mr-2 icon-q" />
-          <div class="card-content">
-            <div class="ct-text">
-              <div class="ct-card-title">
-                {{ item.title }}
-              </div>
+  <div>
+    <router-link :to="`/ho-tro/hoi-dap/${item.alias}`" class="non-undl-hv">
+      <div class="card-wrapper mb-2">
+        <font-awesome-icon icon="question-circle" color="#fff" class="mr-2 icon-q" />
+        <div class="card-content">
+          <div class="ct-text">
+            <div class="ct-card-title">
+              {{ item.title }}
             </div>
           </div>
         </div>
-      </router-link>
-    </div>
-  </no-ssr>
+      </div>
+    </router-link>
+  </div>
 </template>
 
 <script>

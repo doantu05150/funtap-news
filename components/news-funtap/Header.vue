@@ -1,48 +1,46 @@
 <template>
-  <no-ssr>
-    <div class="n-navbar">
-      <div class="n-header d-flex">
-        <div class="d-flex justify-content-between flex-1">
-          <div class="l-header d-flex">
-            <font-awesome-icon
-              @click="handleToggle"
-              icon="bars"
-              color="#fff"
-              class="icon-header mr-4"
+  <div class="n-navbar">
+    <div class="n-header d-flex">
+      <div class="d-flex justify-content-between flex-1">
+        <div class="l-header d-flex">
+          <font-awesome-icon
+            @click="handleToggle"
+            icon="bars"
+            color="#fff"
+            class="icon-header mr-4"
+          />
+          <router-link to="/" class="nf-logo"></router-link>
+        </div>
+        <div class="r-header">
+          <font-awesome-icon v-if="isLogin" icon="user" color="#fff" class="icon-header" />
+          <div v-else class="user-avt">
+            <img
+              id="popover-avt-header"
+              src="~/assets/images/avt.jpg"
+              alt="avatar"
+              class="avt-circle"
             />
-            <router-link to="/" class="nf-logo"></router-link>
-          </div>
-          <div class="r-header">
-            <font-awesome-icon v-if="isLogin" icon="user" color="#fff" class="icon-header" />
-            <div v-else class="user-avt">
-              <img
-                id="popover-avt-header"
-                src="~/assets/images/avt.jpg"
-                alt="avatar"
-                class="avt-circle"
-              />
-              <b-popover target="popover-avt-header" placement="left-bottom" triggers="hover focus">
-                <template v-slot:title>DoanTu</template>
-                <div class="d-flex dir-column">
-                  <nuxt-link to="#" class="non-undl-hv">Thông tin tài khoản</nuxt-link>
-                  <nuxt-link to="#" class="non-undl-hv bdt">Đăng xuất</nuxt-link>
-                </div>
-              </b-popover>
-            </div>
+            <b-popover target="popover-avt-header" placement="left-bottom" triggers="hover focus">
+              <template v-slot:title>DoanTu</template>
+              <div class="d-flex dir-column">
+                <nuxt-link to="#" class="non-undl-hv">Thông tin tài khoản</nuxt-link>
+                <nuxt-link to="#" class="non-undl-hv bdt">Đăng xuất</nuxt-link>
+              </div>
+            </b-popover>
           </div>
         </div>
       </div>
-      <div class="search-bar">
-        <font-awesome-icon icon="search" color="#c9c9c9" class="icon-search" />
-        <b-form-input
-          v-model="keyword"
-          @keydown.enter.native="search(keyword)"
-          class="ct-input"
-          placeholder="Tìm kiếm"
-        ></b-form-input>
-      </div>
     </div>
-  </no-ssr>
+    <div class="search-bar">
+      <font-awesome-icon icon="search" color="#c9c9c9" class="icon-search" />
+      <b-form-input
+        v-model="keyword"
+        @keydown.enter.native="search(keyword)"
+        class="ct-input"
+        placeholder="Tìm kiếm"
+      ></b-form-input>
+    </div>
+  </div>
 </template>
 
 <script>
