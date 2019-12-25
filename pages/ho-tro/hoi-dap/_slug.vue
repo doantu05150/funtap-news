@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import format from 'date-fns/format'
+import { mapGetters } from 'vuex'
 import { NewsHeader, ListNav } from '~/components/news-funtap'
 
 export default {
@@ -39,58 +39,31 @@ export default {
     NewsHeader,
     ListNav,
   },
+  async fetch({ store, params }) {
+    const { slug } = params
+    await store.dispatch('getPostBySlug', { slug })
+  },
   data() {
     return {
       showDrawer: false,
-      detailPost: {},
     }
-  },
-  computed: {
-    renderTitle() {
-      if (this.detailPost) {
-        if (this.detailPost.title) {
-          return this.detailPost.title
-        } else {
-          return 'Loading...'
-        }
-      } else {
-        return 'Page not found'
-      }
-    },
-    renderDescription() {
-      if (this.detailPost) {
-        if (this.detailPost.title) {
-          return this.detailPost.title
-        } else {
-          return 'Description'
-        }
-      } else {
-        return ''
-      }
-    },
   },
   head() {
     return {
-      title: this.renderTitle,
+      title: this.detailPost.title || 'Funtap hỗ trợ',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.renderDescription,
+          content: this.detailPost.description || 'Funtap hỗ trợ',
         },
       ],
     }
   },
-  created() {
-    const { slug } = this.$route.params
-    const url = `http://portal-cmsapi.smobgame.com/api/faq/${slug}`
-    axios
-      .get(url)
-      .then(res => {
-        this.detailPost = res.data.data
-      })
-      // eslint-disable-next-line no-console
-      .catch(error => console.log(error))
+  computed: {
+    ...mapGetters({
+      detailPost: 'currentPost',
+    }),
   },
   methods: {
     handleToggleDrawer() {

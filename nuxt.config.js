@@ -3,6 +3,9 @@ export default {
   /*
    ** Headers of the page
    */
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+  },
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -69,6 +72,19 @@ export default {
         '^/api': '',
       },
       changeOrigin: true,
+    },
+  },
+  generate: {
+    minify: {
+      collapseBooleanAttributes: true,
+      decodeEntities: true,
+      minifyCSS: true,
+      minifyJS: true,
+      processConditionalComments: true,
+      removeEmptyAttributes: true,
+      removeRedundantAttributes: true,
+      trimCustomFragments: true,
+      useShortDoctype: true,
     },
   },
 }
