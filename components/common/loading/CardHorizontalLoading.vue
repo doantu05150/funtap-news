@@ -1,12 +1,12 @@
 <template>
   <content-loader
     :height="172"
-    :width="428"
+    :width="482"
     :speed="2"
     primary-color="#f3f3f3"
     secondary-color="#ecebeb"
   >
-    <rect x="1.5" y="1.27" rx="0" ry="0" width="447" height="177.56" />
+    <rect x="-0.5" y="-0.73" rx="0" ry="0" width="496" height="175" />
   </content-loader>
 </template>
 

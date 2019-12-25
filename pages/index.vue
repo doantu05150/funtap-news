@@ -9,15 +9,26 @@
       <b-container fluid>
         <b-row>
           <b-col cols="12" md="8">
-            <card-news-hot v-for="i in 2" :key="i" />
+            <v-wait for="home.horizontal">
+              <card-horizontal-loading
+                v-for="i in 2"
+                :key="`card-horizontal-loading${i}`"
+                slot="waiting"
+                class="mb-2"
+              />
+              <card-news-hot v-for="i in 2" :key="i" />
+            </v-wait>
           </b-col>
           <b-col cols="12" md="4">
             <div class="title-t4g">
               Top 4 game trong tuần
             </div>
-            <div class="clg-wrapper">
-              <card-game-image v-for="(item, i) in fakeTop4Games" :key="i" :img="item.src" />
-            </div>
+            <v-wait for="home.image">
+              <image-loading slot="waiting" />
+              <div class="clg-wrapper">
+                <card-game-image v-for="(item, i) in fakeTop4Games" :key="i" :img="item.src" />
+              </div>
+            </v-wait>
           </b-col>
         </b-row>
       </b-container>
@@ -25,11 +36,18 @@
         <span class="ct-title">Tin tức khác</span>
       </div>
       <b-container fluid>
-        <b-row>
-          <b-col v-for="i in 3" :key="i" cols="12" md="4">
-            <card-vertical />
-          </b-col>
-        </b-row>
+        <v-wait for="home.vertical">
+          <b-row slot="waiting">
+            <b-col v-for="i in 3" :key="i" cols="12" md="4">
+              <card-vertical-loading />
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col v-for="i in 3" :key="i" cols="12" md="4">
+              <card-vertical />
+            </b-col>
+          </b-row>
+        </v-wait>
       </b-container>
       <div class="tt-title">
         <span class="ct-title">Các câu hỏi thường gặp</span>
@@ -58,7 +76,12 @@ import {
   CardQuestion,
   ListNav,
 } from '~/components/news-funtap'
-import { HomeQuestionLoading, CardHorizontalLoading } from '~/components/common/loading'
+import {
+  HomeQuestionLoading,
+  CardHorizontalLoading,
+  ImageLoading,
+  CardVerticalLoading,
+} from '~/components/common/loading'
 
 export default {
   layout: 'news',
@@ -74,6 +97,8 @@ export default {
     ListNav,
     HomeQuestionLoading,
     CardHorizontalLoading,
+    CardVerticalLoading,
+    ImageLoading,
   },
   data() {
     return {
@@ -100,6 +125,9 @@ export default {
   },
   async created() {
     this.$wait.start('home.question')
+    this.$wait.start('home.horizontal')
+    this.$wait.start('home.vertical')
+    this.$wait.start('home.image')
     await axios
       .get('http://portal-cmsapi.smobgame.com/api/faq-home')
       .then(res => {
@@ -108,6 +136,11 @@ export default {
       // eslint-disable-next-line no-console
       .catch(error => console.log(error))
     this.$wait.end('home.question')
+    setTimeout(() => {
+      this.$wait.end('home.horizontal')
+      this.$wait.end('home.image')
+      this.$wait.end('home.vertical')
+    }, 1000)
   },
 }
 </script>

@@ -1,15 +1,14 @@
 <template>
   <content-loader
-    :height="160"
-    :width="400"
+    :height="159"
+    :width="256"
     :speed="2"
     primary-color="#f3f3f3"
     secondary-color="#ecebeb"
   >
-    <rect x="11.5" y="7.65" rx="0" ry="0" width="211.39" height="123.02" />
+    <rect x="-0.5" y="-0.73" rx="0" ry="0" width="496" height="175" />
   </content-loader>
 </template>
-
 <script>
 import { ContentLoader } from 'vue-content-loader'
 

@@ -27,7 +27,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/fontawesome.js', '~/plugins/vue-lazyload.js'],
+  plugins: ['~/plugins/fontawesome.js', { src: '~/plugins/vue-lazyload.js', ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */
