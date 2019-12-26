@@ -46,7 +46,7 @@ export default {
         },
         {
           title: 'Sự kiện',
-          link: '#',
+          link: 'su-kien',
         },
         {
           title: 'Khuyến mãi',

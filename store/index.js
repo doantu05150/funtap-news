@@ -32,7 +32,7 @@ export const actions = {
     }
   },
   async getPostBySlug({ commit }, { slug }) {
-    const res = await axios.get(`http://portal-cmsapi.smobgame.com/api/faq/${slug}`)
+    const res = await axios.get(`http://portal-cmsapi.smobgame.com/api/faq/${slug}/`)
     commit('SET_CURRENT_POST', res.data.data)
   },
 }

@@ -20,7 +20,7 @@ export const mutations = {
 
 export const actions = {
   getHomeQuestions: ({ commit }) => {
-    axios.get('http://portal-cmsapi.smobgame.com/api/faq-home').then(res => {
+    axios.get('http://portal-cmsapi.smobgame.com/api/faq-home/').then(res => {
       commit('SET_HOME_QUESTIONS', res.data.data)
     })
   },

@@ -83,7 +83,7 @@ export default {
     const { keyword } = this.$route.query
     this.$wait.start('search.results')
     await axios
-      .get(`http://portal-cmsapi.smobgame.com/api/article_search?keyword=${keyword}`)
+      .get(`http://portal-cmsapi.smobgame.com/api/article_search?keyword=${keyword}/`)
       .then(res => {
         this.resultsFound = res.data.articles
       })

@@ -1,3 +1,4 @@
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 export default {
   mode: 'universal',
   /*
@@ -17,7 +18,7 @@ export default {
         content: 'Funtap hỗ trợ website',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/svg', href: '~/assets/logo.svg' }],
+    link: [{ rel: 'icon', type: 'image/svg', href: '/logo.svg' }],
   },
   /*
    ** Customize the progress-bar color
@@ -64,27 +65,53 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
-  },
-  proxy: {
-    '/api': {
-      target: 'http://portal-cmsapi.smobgame.com/api/',
-      pathRewrite: {
-        '^/api': '',
+    extractCSS: true,
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new OptimizeCssAssetsPlugin({
+          assetNameRegExp: /\.optimize\.css$/g,
+          cssProcessor: require('cssnano'),
+          cssProcessorPluginOptions: {
+            preset: ['default', { discardComments: { removeAll: true } }],
+          },
+          canPrint: true,
+        }),
+      ],
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true,
+          },
+        },
       },
-      changeOrigin: true,
     },
   },
+  proxy: {
+    // '/api': {
+    //   target: 'http://portal-cmsapi.smobgame.com/api/',
+    //   pathRewrite: {
+    //     '^/api': '',
+    //   },
+    //   changeOrigin: true,
+    // },
+  },
   generate: {
-    minify: {
-      collapseBooleanAttributes: true,
-      decodeEntities: true,
-      minifyCSS: true,
-      minifyJS: true,
-      processConditionalComments: true,
-      removeEmptyAttributes: true,
-      removeRedundantAttributes: true,
-      trimCustomFragments: true,
-      useShortDoctype: true,
+    html: {
+      minify: {
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        minifyCSS: true,
+        minifyJS: true,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true,
+      },
     },
   },
 }

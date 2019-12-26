@@ -129,7 +129,7 @@ export default {
     this.$wait.start('home.vertical')
     this.$wait.start('home.image')
     await axios
-      .get('http://portal-cmsapi.smobgame.com/api/faq-home')
+      .get('http://portal-cmsapi.smobgame.com/api/faq-home/')
       .then(res => {
         this.homeQuestions = res.data.data
       })
