@@ -1,12 +1,6 @@
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 export default {
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-  },
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -18,7 +12,14 @@ export default {
         content: 'Funtap hỗ trợ website',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/svg', href: '/logo.svg' }],
+    link: [{ rel: 'icon', type: 'image/png', href: '/logo.png' }],
+    script: [
+      {
+        src: 'https://connect.facebook.net/vi_VN/sdk.js',
+        async: true,
+        defer: true,
+      },
+    ],
   },
   /*
    ** Customize the progress-bar color
@@ -31,7 +32,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/fontawesome.js', { src: '~/plugins/vue-lazyload.js', ssr: false }],
+  plugins: [
+    '~/plugins/fontawesome.js',
+    '~/plugins/fb-sdk.js',
+    { src: '~/plugins/vue-lazyload.js', ssr: false },
+  ],
   /*
    ** Nuxt.js dev-modules
    */
