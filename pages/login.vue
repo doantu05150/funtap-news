@@ -61,8 +61,6 @@
 </template>
 
 <script>
-/* global FB */
-
 export default {
   data() {
     return {
@@ -70,6 +68,9 @@ export default {
       password: '',
       state: null,
     }
+  },
+  mounted() {
+    this.$initFbSDK()
   },
   methods: {
     validationLogin() {
@@ -85,17 +86,6 @@ export default {
     },
     changeState(value) {
       this.state = value
-    },
-    loginWithFacebook() {
-      FB.login(function(response) {
-        if (response.status === 'connected') {
-          FB.api('/me', function(response) {
-            console.log('Successful login for: ' + response.name)
-          })
-        } else {
-          // The person is not logged into your webpage or we are unable to tell.
-        }
-      })
     },
   },
 }

@@ -15,7 +15,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/png', href: '/logo.png' }],
     script: [
       {
-        src: 'https://connect.facebook.net/vi_VN/sdk.js',
+        src: 'https://connect.facebook.net/en_US/all.js',
         async: true,
         defer: true,
       },
