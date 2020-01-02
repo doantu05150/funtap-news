@@ -17,8 +17,8 @@
           </div>
           <div v-else class="user-avt">
             <img
+              :src="user.picture.data.url"
               id="popover-avt-header"
-              src="~/assets/images/avt.jpg"
               alt="avatar"
               class="avt-circle"
             />
@@ -82,6 +82,7 @@ export default {
     async logout() {
       await this.$auth.logout()
       this.user = this.$auth.user
+      this.$router.push('/login')
     },
     loginWithFacebook() {
       this.$auth.loginWith('facebook')
