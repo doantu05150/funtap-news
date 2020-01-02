@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="bg-container">
-      <!-- <img src="https://cdn.smobgame.com/templates/thosanlinhhon/images/bg1.jpg" alt="logo image" /> -->
       <div class="form-container">
         <div class="d-flex flex-column form-content">
           <div class="text-white text-center uppercase title py-3">Đăng nhập</div>
@@ -9,15 +8,7 @@
             <b-button @click="changeState(`funid`)" variant="danger" class="uppercase mb-3"
               >Tài khoản Funid</b-button
             >
-            <b-button
-              class="fb-login-button custom-fb-bt uppercase mb-3"
-              data-button-type="login_with"
-              data-width="100%"
-              data-auto-logout-link="false"
-              data-use-continue-as="false"
-              variant="primary"
-              >facebook</b-button
-            >
+            <b-button class=" custom-fb-bt uppercase mb-3" variant="primary">facebook</b-button>
             <b-button class="uppercase mb-3">chơi ngay</b-button>
           </div>
           <div v-if="state === `funid`" class="d-flex flex-column">
@@ -67,10 +58,8 @@ export default {
       username: '',
       password: '',
       state: null,
+      isFBReady: false,
     }
-  },
-  mounted() {
-    this.$initFbSDK()
   },
   methods: {
     validationLogin() {

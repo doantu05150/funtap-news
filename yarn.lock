@@ -8342,6 +8342,11 @@ vue-eslint-parser@^7.0.0:
     esquery "^1.0.1"
     lodash "^4.17.15"
 
+vue-facebook-login-component@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/vue-facebook-login-component/-/vue-facebook-login-component-1.4.0.tgz#65c216851b1fb254d945f92f01da7b52a1860caa"
+  integrity sha512-lkZjYxoGmuLK4qawtiWUVlu7COHaqh8DVyfkfqzfEspUmWYHDiYsy2cdhdtRt17N/1XpTk1Q2U13IXmFSZJHHw==
+
 vue-functional-data-merge@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/vue-functional-data-merge/-/vue-functional-data-merge-3.1.0.tgz#08a7797583b7f35680587f8a1d51d729aa1dc657"
