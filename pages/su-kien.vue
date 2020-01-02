@@ -22,6 +22,7 @@ export default {
   head: {
     title: 'Sự kiện',
   },
+  middleware: 'auth',
 }
 </script>
 

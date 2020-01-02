@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between flex-1">
         <div class="l-header d-flex">
           <font-awesome-icon
-            @click="handleToggle"
+            @click="handleToggle()"
             icon="bars"
             color="#fff"
             class="icon-header mr-4"
@@ -12,7 +12,9 @@
           <router-link to="/" class="nf-logo"></router-link>
         </div>
         <div class="r-header">
-          <font-awesome-icon v-if="isLogin" icon="user" color="#fff" class="icon-header" />
+          <div v-if="!user" id="popver-nologin" class="icon-header-wrapper">
+            <font-awesome-icon icon="user" color="#fff" class="icon-header" />
+          </div>
           <div v-else class="user-avt">
             <img
               id="popover-avt-header"
@@ -20,14 +22,24 @@
               alt="avatar"
               class="avt-circle"
             />
-            <b-popover target="popover-avt-header" placement="left-bottom" triggers="hover focus">
-              <template v-slot:title>DoanTu</template>
-              <div class="d-flex dir-column">
-                <nuxt-link to="#" class="non-undl-hv">Thông tin tài khoản</nuxt-link>
-                <nuxt-link to="#" class="non-undl-hv bdt">Đăng xuất</nuxt-link>
-              </div>
-            </b-popover>
           </div>
+          <b-popover
+            v-if="user"
+            target="popover-avt-header"
+            placement="left-bottom"
+            triggers="hover focus"
+          >
+            <template v-slot:title>{{ user.name }}</template>
+            <div class="d-flex dir-column">
+              <nuxt-link to="#" class="non-undl-hv">Thông tin tài khoản</nuxt-link>
+              <div @click="logout()" class="non-undl-hv bdt">Đăng xuất</div>
+            </div>
+          </b-popover>
+          <b-popover v-else target="popver-nologin" placement="left-bottom" triggers="hover focus">
+            <div class="d-flex">
+              <div @click="loginWithFacebook()" class="non-undl-hv bdt">Đăng nhập</div>
+            </div>
+          </b-popover>
         </div>
       </div>
     </div>
@@ -47,9 +59,12 @@
 export default {
   data() {
     return {
-      isLogin: false,
       keyword: '',
+      user: null,
     }
+  },
+  created() {
+    this.user = this.$auth.user
   },
   methods: {
     handleToggle() {
@@ -63,6 +78,13 @@ export default {
           keyword,
         },
       })
+    },
+    async logout() {
+      await this.$auth.logout()
+      this.user = this.$auth.user
+    },
+    loginWithFacebook() {
+      this.$auth.loginWith('facebook')
     },
   },
 }
@@ -109,6 +131,10 @@ export default {
     color #fff
 .r-header
   align-self center
+  .icon-header-wrapper
+    border 2px solid #fff
+    border-radius 50px
+    padding 5px 7px
   .avt-circle
     width 38px
     height 38px

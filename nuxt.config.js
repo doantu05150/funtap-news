@@ -13,13 +13,6 @@ export default {
       },
     ],
     link: [{ rel: 'icon', type: 'image/png', href: '/logo.png' }],
-    script: [
-      {
-        src: 'https://connect.facebook.net/en_US/all.js',
-        async: true,
-        defer: true,
-      },
-    ],
   },
   /*
    ** Customize the progress-bar color
@@ -32,11 +25,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    '~/plugins/fontawesome.js',
-    '~/plugins/fb-sdk.js',
-    { src: '~/plugins/vue-lazyload.js', ssr: false },
-  ],
+  plugins: ['~/plugins/fontawesome.js', { src: '~/plugins/vue-lazyload.js', ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -53,8 +42,19 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
+    '@nuxtjs/auth',
     'vue-wait/nuxt',
   ],
+  auth: {
+    strategies: {
+      facebook: {
+        client_id: '396030717571013',
+        userinfo_endpoint:
+          'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email,birthday',
+        scope: ['public_profile', 'email', 'user_birthday'],
+      },
+    },
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -96,13 +96,13 @@ export default {
     },
   },
   proxy: {
-    // '/api': {
-    //   target: 'http://portal-cmsapi.smobgame.com/api/',
-    //   pathRewrite: {
-    //     '^/api': '',
-    //   },
-    //   changeOrigin: true,
-    // },
+    '/api': {
+      target: 'http://portal-cmsapi.smobgame.com/api/',
+      pathRewrite: {
+        '^/api': '',
+      },
+      changeOrigin: true,
+    },
   },
   generate: {
     html: {

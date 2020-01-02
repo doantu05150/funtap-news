@@ -1,5 +1,5 @@
 <template>
-  <no-ssr>
+  <client-only>
     <div>
       <router-link :to="`/ho-tro/hoi-dap/${item.alias}`" class="no-udl">
         <div class="cq-wrapper">
@@ -12,7 +12,7 @@
         </div>
       </router-link>
     </div>
-  </no-ssr>
+  </client-only>
 </template>
 
 <script>

@@ -8,7 +8,12 @@
             <b-button @click="changeState(`funid`)" variant="danger" class="uppercase mb-3"
               >Tài khoản Funid</b-button
             >
-            <b-button class=" custom-fb-bt uppercase mb-3" variant="primary">facebook</b-button>
+            <b-button
+              @click="loginWithFacebook"
+              class=" custom-fb-bt uppercase mb-3"
+              variant="primary"
+              >facebook</b-button
+            >
             <b-button class="uppercase mb-3">chơi ngay</b-button>
           </div>
           <div v-if="state === `funid`" class="d-flex flex-column">
@@ -46,6 +51,9 @@
             <b-button variant="danger" class="uppercase mb-3">Đăng ký</b-button>
           </div>
         </div>
+        <b-alert v-model="error" variant="danger" dismissible>
+          Đăng nhập lỗi!
+        </b-alert>
       </div>
     </div>
   </div>
@@ -58,7 +66,7 @@ export default {
       username: '',
       password: '',
       state: null,
-      isFBReady: false,
+      error: null,
     }
   },
   methods: {
@@ -68,13 +76,14 @@ export default {
       }
       return false
     },
-    login() {
-      if (this.validationLogin()) {
-        this.$store.dispatch('login', { router: this.$router })
-      }
-    },
     changeState(value) {
       this.state = value
+    },
+    loginWithFacebook() {
+      this.error = null
+      this.$auth.loginWith('facebook').catch(e => {
+        this.error = e + ''
+      })
     },
   },
 }
