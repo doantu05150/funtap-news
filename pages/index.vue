@@ -82,6 +82,7 @@ import {
   ImageLoading,
   CardVerticalLoading,
 } from '~/components/common/loading'
+import generateUUID from '~/assets/js/generateUUID.js'
 
 export default {
   layout: 'news',
@@ -124,6 +125,8 @@ export default {
     }
   },
   async created() {
+    // eslint-disable-next-line no-console
+    console.log(generateUUID())
     this.$wait.start('home.question')
     this.$wait.start('home.horizontal')
     this.$wait.start('home.vertical')
