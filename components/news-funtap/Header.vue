@@ -31,13 +31,13 @@
           >
             <template v-slot:title>{{ user.name }}</template>
             <div class="d-flex dir-column">
-              <nuxt-link to="#" class="non-undl-hv">Thông tin tài khoản</nuxt-link>
+              <nuxt-link to="/profile" class="non-undl-hv">Thông tin tài khoản</nuxt-link>
               <div @click="logout()" class="non-undl-hv bdt">Đăng xuất</div>
             </div>
           </b-popover>
           <b-popover v-else target="popver-nologin" placement="left-bottom" triggers="hover focus">
             <div class="d-flex">
-              <div @click="loginWithFacebook()" class="non-undl-hv bdt">Đăng nhập</div>
+              <router-link to="/login" class="non-undl-hv bdt">Đăng nhập</router-link>
             </div>
           </b-popover>
         </div>
@@ -80,12 +80,16 @@ export default {
       })
     },
     async logout() {
-      await this.$auth.logout()
+      await this.$auth.logout().catch(e => {
+        this.$toast.show('Error Logout', { icon: 'fingerprint' })
+      })
       this.user = this.$auth.user
       this.$router.push('/login')
     },
-    loginWithFacebook() {
-      this.$auth.loginWith('facebook')
+    async loginWithFacebook() {
+      await this.$auth.loginWith('facebook').catch(e => {
+        this.$toast.show('Error Login', { icon: 'fingerprint' })
+      })
     },
   },
 }
