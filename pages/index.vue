@@ -68,6 +68,7 @@
 
 <script>
 import axios from 'axios'
+import generateUUID from '../assets/js/generateUUID.js'
 import {
   SectionTitle,
   CardNewsHot,
@@ -82,7 +83,6 @@ import {
   ImageLoading,
   CardVerticalLoading,
 } from '~/components/common/loading'
-import generateUUID from '~/assets/js/generateUUID.js'
 
 export default {
   layout: 'news',
@@ -125,8 +125,6 @@ export default {
     }
   },
   async created() {
-    // eslint-disable-next-line no-console
-    console.log(generateUUID())
     this.$wait.start('home.question')
     this.$wait.start('home.horizontal')
     this.$wait.start('home.vertical')
@@ -144,6 +142,10 @@ export default {
       this.$wait.end('home.image')
       this.$wait.end('home.vertical')
     }, 1000)
+  },
+  mounted() {
+    // eslint-disable-next-line no-console
+    console.log(generateUUID())
   },
 }
 </script>
