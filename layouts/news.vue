@@ -88,4 +88,5 @@ export default {
   max-width 768px
   background-color #fff
   padding-bottom 60px
+  overflow hidden
 </style>

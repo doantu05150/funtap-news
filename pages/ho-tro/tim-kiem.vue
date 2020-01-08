@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="search-section">
     <img src="~/assets/images/bn3.jpg" alt="adv" class="img-fluid" />
     <list-nav />
     <div class="n-content">
@@ -65,6 +65,9 @@ export default {
       keyword,
     }
   },
+  key(route) {
+    return route.fullPath
+  },
   data() {
     return {
       keyword: '',
@@ -103,4 +106,6 @@ export default {
 .n-content
   text-align left
   padding 10px
+.search-section
+  min-height 100vh
 </style>

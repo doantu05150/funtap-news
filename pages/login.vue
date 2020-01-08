@@ -26,7 +26,7 @@
             <b-form-input v-model="username" class="mb-3" placeholder="Tài khoản funid" />
             <b-form-input v-model="password" class="mb-3" placeholder="Mật khẩu" type="password" />
             <a href="#" class="underline text-center text-white my-3">Quên mật khẩu</a>
-            <b-button variant="danger" class="uppercase mb-3">Đăng nhập</b-button>
+            <b-button @click="login" variant="danger" class="uppercase mb-3">Đăng nhập</b-button>
             <div class=" text-center text-white">
               Chưa có tài khoản.
               <span @click="changeState(`signup`)" class="underline">Đăng ký ngay</span>
@@ -51,9 +51,6 @@
             <b-button variant="danger" class="uppercase mb-3">Đăng ký</b-button>
           </div>
         </div>
-        <b-alert v-model="error" variant="danger" dismissible>
-          Đăng nhập lỗi!
-        </b-alert>
       </div>
     </div>
   </div>
@@ -66,21 +63,38 @@ export default {
       username: '',
       password: '',
       state: null,
-      error: null,
+      error: '',
     }
   },
   methods: {
     validationLogin() {
-      if (this.email === 'tu' && this.pwd === 'deptrai') {
-        return true
+      if (!this.username || !this.password) {
+        return 0
+      } else if (this.username === 'tu' && this.password === 'deptrai') {
+        return 1
       }
-      return false
+      return 2
     },
     changeState(value) {
       this.state = value
     },
+    login() {
+      this.error = ''
+      switch (this.validationLogin()) {
+        case 1:
+          // do something
+          this.error = 'Đăng nhập thành công'
+          break
+        case 2:
+          this.error = 'Sai tên đăng nhập'
+          break
+        case 0:
+          this.error = 'Vui lòng điền đầy đủ các trường'
+          break
+      }
+    },
     loginWithFacebook() {
-      this.error = null
+      this.error = ''
       this.$auth.loginWith('facebook').catch(e => {
         this.error = e + ''
       })
